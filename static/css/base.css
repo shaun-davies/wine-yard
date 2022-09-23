@@ -1,0 +1,61 @@
+
+html {
+    height: 100%;
+}
+
+.hero {
+    /*background: url('/media/red_wine.jpg') no-repeat center center fixed; */
+    background-size: cover;
+    position: relative;
+    object-fit: fill;
+}
+
+.hero-image {
+    display: block;
+}
+
+.text-black {
+    color: #00000055 !important;
+}
+
+.logo-font {
+    color: rgb(65, 65, 65) !important;
+    font-family: 'Permanent Marker';
+}
+
+.subtitle {
+    font-family: 'Permanent Marker';
+}
+
+.covertext {
+    position: absolute; /* To make the div to be place anywhere. It is out of the document flow */
+    top: 150px; /* The distance between the div with the top of document */
+    left: 0px; /* Make the div full width */
+    right: 0px; /* Make the div full width */
+}
+
+.shop-now {
+    text-align: center;
+    margin-top: 10px;
+}
+/* ------------------------------------ Media Queries */
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 80%;
+    }
+}
+
+@media (min-width: 992px) {
+    .fixed-top-desktop-only {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1030;
+    }
+
+    .header-container {
+        padding-top: 164px;
+    }
+}
