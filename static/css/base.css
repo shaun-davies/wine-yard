@@ -8,6 +8,7 @@ html {
     background-size: cover;
     position: relative;
     object-fit: fill;
+    margin-top: 50px;
 }
 
 .hero-image {
@@ -21,6 +22,10 @@ html {
 .logo-font {
     color: rgb(65, 65, 65) !important;
     font-family: 'Permanent Marker';
+}
+
+.nav-font {
+    font-family: 'Roboto';
 }
 
 .subtitle {
@@ -56,6 +61,6 @@ html {
     }
 
     .header-container {
-        padding-top: 164px;
+        padding-top: 64px;
     }
 }
