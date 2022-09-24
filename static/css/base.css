@@ -1,14 +1,14 @@
-
 html {
     height: 100%;
 }
 
-.hero {
+
+.main {
     /*background: url('/media/red_wine.jpg') no-repeat center center fixed; */
     background-size: cover;
     position: relative;
-    object-fit: fill;
-    margin-top: 50px;
+    /*object-fit: fill;*/
+    margin-top: 70px;
 }
 
 .hero-image {
