@@ -11,10 +11,10 @@
                 Wines
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="wines-link">
-                <a href="" class="dropdown-item">White Wine</a>
-                <a href="" class="dropdown-item">Red Wine</a>
-                <a href="" class="dropdown-item">Rosé Wine</a>
-                <a href="" class="dropdown-item">All Wine</a>
+                <a href="{% url 'products' %}?category=white_wine" class="dropdown-item">White Wine</a>
+                <a href="{% url 'products' %}?category=red_wine" class="dropdown-item">Red Wine</a>
+                <a href="{% url 'products' %}?category=rose_wine" class="dropdown-item">Rosé Wine</a>
+                <a href="{% url 'products' %}?category=white_wine,red_wine,rose_wine" class="dropdown-item">All Wine</a>
             </div>
         </li>
 
@@ -23,9 +23,9 @@
                 Champagne and Sparkling
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="champagne-sparkling-link">
-                <a href="" class="dropdown-item">Champagne</a>
-                <a href="" class="dropdown-item">Prosecco</a>
-                <a href="" class="dropdown-item">All Sparkling Wine</a>
+                <a href="{% url 'products' %}?category=champagne" class="dropdown-item">Champagne</a>
+                <a href="{% url 'products' %}?category=prosecco" class="dropdown-item">Prosecco</a>
+                <a href="{% url 'products' %}?category=champagne,prosecco" class="dropdown-item">All Sparkling Wine</a>
             </div>
         </li>
 
@@ -34,14 +34,14 @@
                 By Country
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="country-link">
-                <a href="" class="dropdown-item">Argentina</a>
-                <a href="" class="dropdown-item">Australia</a>
-                <a href="" class="dropdown-item">Chile</a>
-                <a href="" class="dropdown-item">France</a>
-                <a href="" class="dropdown-item">Italy</a>
-                <a href="" class="dropdown-item">New Zealand</a>
-                <a href="" class="dropdown-item">South Africa</a>
-                <a href="" class="dropdown-item">Spain</a>
+                <a href="{% url 'products' %}?country=argentina" class="dropdown-item">Argentina</a>
+                <a href="{% url 'products' %}?country=australia" class="dropdown-item">Australia</a>
+                <a href="{% url 'products' %}?country=chile" class="dropdown-item">Chile</a>
+                <a href="{% url 'products' %}?country=france" class="dropdown-item">France</a>
+                <a href="{% url 'products' %}?country=italy" class="dropdown-item">Italy</a>
+                <a href="{% url 'products' %}?country=new_zealand" class="dropdown-item">New Zealand</a>
+                <a href="{% url 'products' %}?country=south_africa" class="dropdown-item">South Africa</a>
+                <a href="{% url 'products' %}?country=spain" class="dropdown-item">Spain</a>
             </div>
         </li>
     </ul>
