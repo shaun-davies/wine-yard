@@ -2,7 +2,6 @@ html {
     height: 100%;
 }
 
-
 .main {
     /*background: url('/media/red_wine.jpg') no-repeat center center fixed; */
     background-size: cover;
@@ -42,6 +41,19 @@ html {
 .shop-now {
     text-align: center;
     margin-top: 10px;
+}
+
+.card-image {
+    height: 250px;
+}
+
+.anchor-image {
+    max-width: 100%;
+    height: auto;
+}
+
+.product-card {
+    height: 200px; 
 }
 /* ------------------------------------ Media Queries */
 
