@@ -7,7 +7,7 @@ html {
     background-size: cover;
     position: relative;
     /*object-fit: fill;*/
-    margin-top: 70px;
+    margin-top: 80px;
 }
 
 .hero-image {
@@ -55,6 +55,11 @@ html {
 .product-card {
     height: 200px; 
 }
+
+.category-title {
+    padding-left: 37%;
+    padding-right: 37%;
+} 
 /* ------------------------------------ Media Queries */
 
 @media (min-width: 1200px) {
@@ -76,3 +81,19 @@ html {
         padding-top: 64px;
     }
 }
+/*
+@media (max-width: 685px) {
+    .category-name {
+        min-width: none;
+        width: fit-content;
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+}
+
+@media (max-width: 685px) {
+    .category-title {
+      
+    }
+}
+*/

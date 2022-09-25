@@ -14,12 +14,30 @@
     <div class="row">
         <div class="col text-center mt-3">
             <h2 class="logo-font">Full Range</h2>
-            <hr class="w-50 mb-1">
         </div>
     </div>
+    <div class="row category-title text-center">
+        {% for c in current_categories %}
+        <a class="logo-font col-xs-4 col-sm category-name" href="{% url 'products' %}?category={{ c.name }}">
+            <p>{{ c.friendly_name }}</p>
+        </a>
+        {% endfor %}
+        {% for c in current_countries %}
+        <a class="logo-font col-xs-4 col-sm category-name" href="{% url 'products' %}?countries={{ c.name }}">
+            <p>{{ c.friendly_name }}</p>
+        </a>
+        {% endfor %}
+    </div>
+    <hr class="w-50 mb-1">
     <div class="row">
         <div class="product-container col-10 offset-1">
-            <div class="row mt-1 mb-2"></div>
+            <div class="row mt-1 mb-2">
+                <div class="col-12 col-md-6">
+                    <p class="text-muted mt-3 text-center text-md-left">
+                        {{ products|length }} Products{% if search_term %} found for <strong>{{ search_term }}</strong>{% endif %}
+                    </p>
+                </div>
+            </div>
             <div class="row">
                 {% for product in products %}
                     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
