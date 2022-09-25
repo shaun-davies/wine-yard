@@ -60,6 +60,18 @@ html {
     padding-left: 37%;
     padding-right: 37%;
 } 
+
+.btt-button {
+    height: 42px;
+    width: 42px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
+.btt-link {
+    cursor: pointer;
+}
 /* ------------------------------------ Media Queries */
 
 @media (min-width: 1200px) {
