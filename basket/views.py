@@ -1,4 +1,7 @@
 from django.shortcuts import render, redirect, reverse, HttpResponse
+from django.contrib import messages
+
+from products.models import Product
 
 # Create your views here.
 
@@ -10,6 +13,7 @@ def view_basket(request):
 def add_to_basket(request, item_id):
     """ Add quantity of selected product to shopping basket """
 
+    product = Product.objects.get(pk=item_id)
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
     basket = request.session.get('basket', {})
@@ -18,6 +22,7 @@ def add_to_basket(request, item_id):
         basket[item_id] += quantity
     else: 
         basket[item_id] = quantity
+        messages.success(request, f'Added {product.name} to your basket')
 
     request.session['basket'] = basket
     return redirect(redirect_url)
@@ -39,7 +44,7 @@ def adjust_basket(request, item_id):
 
 
 def remove_from_basket(request, item_id):
-    """ Remove item from shopping bag """
+    """Remove the item from the shopping basket"""
 
     try:
         basket = request.session.get('basket', {})
@@ -47,7 +52,8 @@ def remove_from_basket(request, item_id):
         basket.pop(item_id)
 
         request.session['basket'] = basket
-        return HttpResponce(status=200)
+        return HttpResponse(status=200)
 
     except Exception as e:
-        return HttpResponce(status=500)
+        return HttpResponse(status=500)
+
