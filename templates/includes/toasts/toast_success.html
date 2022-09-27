@@ -14,7 +14,7 @@
             </div>
         </div>
         <br>
-        {% if grand_total %}
+        {% if grand_total and not on_profile_page %}
         <div class="row">
             <div class="col">
                 <a href="{% url 'view_basket' %}" class="btn btn-block btn-outline-dark rounded-0">
