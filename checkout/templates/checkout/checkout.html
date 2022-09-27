@@ -48,7 +48,7 @@
                         {% if item.product.image %}
                             <img class="w-100" src="{{ item.product.image.url }}" alt="{{ product.name }}">
                         {% else %}
-                            <img class="w-100" src="/media/noimage.png" alt="{{ product.name }}">
+                            <img class="w-100" src="{{ item.product.image }}" alt="{{ product.name }}" onerror="{src='/media/noimage.png'}">
                         {% endif %}
                     </a>
                 </div>
