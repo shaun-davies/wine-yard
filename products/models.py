@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.contrib.auth.models import User
 
 class Category(models.Model):
 
@@ -59,8 +60,9 @@ class ProductReview(models.Model):
         (5, '5'),
     )
     
-    product = models.ForeignKey('Product', on_delete=models.CASCADE)
-    rating = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    review = models.TextField(max_length=500)
     user_name = models.CharField(max_length=50, null=True, blank=True)
     rating = models.IntegerField(choices=RATING_CHOICES)
 
