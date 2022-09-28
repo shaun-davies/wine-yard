@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-from .models import Product, Category, Country
-from .forms import ProductForm
+from .models import Product, Category, Country, ProductReview
+from .forms import ProductForm, ReviewForm
 
 # Create your views here.
 
@@ -118,3 +118,35 @@ def delete_product(request, product_id):
     product.delete()
     messages.success(request, 'Product deleted.')
     return redirect(reverse('products'))
+
+###### Reviews
+
+def add_review(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    if request.method == 'POST':
+        form = ReviewForm(request.POST, instance=product)
+        if form.is_valid():
+            ProductReview.objects.create(
+                product=product,
+                user=request.user,
+                review=request.POST.get('review'),
+                user_name=request.POST.get('user_name'),
+                rating=int(request.POST.get('rating'))
+            )
+            # review_form = form.save(commit=False)
+            # review_form.product = product
+            # review_form.user = request.user
+            # form.save()
+            messages.success(request, f'Successfully added review of {product.name}')
+        else:
+            messages.error(request, 'Failed to review product. Ensure form is valid.')
+    else: 
+        form = ReviewForm(instance=product)
+    
+    template = "products/add_review.html"
+    context = {
+        'form' : form,
+        'product' : product,
+        'user' : request.user,
+    }
+    return render(request, template, context)

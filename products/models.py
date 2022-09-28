@@ -67,4 +67,4 @@ class ProductReview(models.Model):
     rating = models.IntegerField(choices=RATING_CHOICES)
 
     def __str__(self):
-        return self.name
+        return self.review
