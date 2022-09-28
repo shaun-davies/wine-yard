@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 class Category(models.Model):
 
@@ -49,3 +49,11 @@ class Product(models.Model):
         return self.name
 
 
+class ProductReview(models.Model):
+    product = models.ForeignKey('Product', on_delete=models.CASCADE)
+    rating = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
+    user_name = models.CharField(max_length=50, null=True, blank=True)
+    review = models.TextField(max_length=500)
+
+    def __str__(self):
+        return self.name
