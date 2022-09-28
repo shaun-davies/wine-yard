@@ -50,10 +50,19 @@ class Product(models.Model):
 
 
 class ProductReview(models.Model):
+
+    RATING_CHOICES = (
+        (1, '1'),
+        (2, '2'),
+        (3, '3'),
+        (4, '4'),
+        (5, '5'),
+    )
+    
     product = models.ForeignKey('Product', on_delete=models.CASCADE)
     rating = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
     user_name = models.CharField(max_length=50, null=True, blank=True)
-    review = models.TextField(max_length=500)
+    rating = models.IntegerField(choices=RATING_CHOICES)
 
     def __str__(self):
         return self.name
