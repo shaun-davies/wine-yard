@@ -3,15 +3,31 @@ html {
 }
 
 .main {
-    /*background: url('/media/red_wine.jpg') no-repeat center center fixed; */
-    background-size: cover;
-    position: relative;
-    /*object-fit: fill;*/
     margin-top: 80px;
+    height: 700px;
+}
+
+.hero {
+    
+    object-fit: fill;
 }
 
 .hero-image {
-    display: block;
+    height: 100%;
+}
+
+#footer {
+    height: 40px;
+    background-color: white;
+    color: black;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 20px;
+    border-top: #222, 2px;
 }
 
 .text-black {

@@ -2,38 +2,52 @@
 {% load static %}
 
 {% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
-    </div>
+<div class="container header-container">
+  <div class="row">
+    <div class="col"></div>
+  </div>
+</div>
 {% endblock %}
 
 {% block content %}
 <div class="container-fluid main">
-    <div class="row hero-image">
-        <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active image-1">
-                <img class="d-block w-100" src="/media/red_wine.jpg" alt="Red wine">
-              </div>
-              <div class="carousel-item">
-                <img class="d-block w-100" src="/media/random.jpg" alt="White wine">
-              </div>
-            </div>
-          </div>
-          <div class="covertext">
-            <div class="col-lg-10" style="float:none; margin:0 auto;">
-              <h3 class="subtitle">Wine delivered straight to your door...</h3>
-              <div class="my-5">
-                <h4>
-                    <a href="{% url 'products' %}" class="btn btn-lg btn-secondary text-uppercase py-3 shop-now">Shop Now</a>
-                </h4>
-            </div>
-            </div>
-          </div>
+  <div class="row hero-image">
+    <div class="covertext">
+      <div class="col-lg-10 mt-4" style="float:none; margin:0 auto;">
+        <h3 class="subtitle">Wine delivered straight to your door...</h3>
+        <div class="my-4">
+          <h4>
+            <a href="{% url 'products' %}" class="btn btn-lg btn-outline-dark btn-light text-uppercase py-3 shop-now">Shop Now</a>
+        </h4>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
+
+<div class="container">
+  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <div class="col-xs-8 d-flex align-items-center">
+      <span class="text-muted">Wineyard, 2022. For educational purposes</span>
+    </div>
+    <ul class="nav col-xs-4 justify-content-end d-flex text-secondary">
+      <li class="ml-4">
+        <a class="text-black" href="https://www.facebook.com" target="_blank">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+      <li class="ml-4">
+        <a class="text-black" href="https://www.twitter.com" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+      <li class="ml-4">
+        <a class="text-black" href="https://www.instagram.com" target="_blank">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </li>
+    </ul>
+  </footer>
+</div>
+    
 {% endblock %}
-
-
