@@ -178,3 +178,12 @@ def edit_review(request, review_id):
     }
 
     return render(request, template, context)
+
+def delete_review(request, review_id):
+    """ Delete a review of a product """
+
+    review = get_object_or_404(ProductReview, pk=review_id)
+    product = review.product
+    review.delete()
+    messages.success(request, 'Review deleted.')
+    return redirect(reverse('product_detail', args=[product.id]))
