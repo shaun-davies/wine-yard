@@ -71,16 +71,21 @@
                                 </small>
                                 {% endif %}
                             </div>
-                            <div class="col-12">
-                                <a href="{% url 'products' %}" class="btn btn-outline-dark rounded-0 mt-2">
-                                    <span>
-                                        <i class="fas fa-arrow-left"></i>
-                                    </span>
-                                    <span class="text-uppercase">&nbsp;Keep Browsing&nbsp;</span>
-                                </a>
-                                <a class="btn btn-warning btn-outline-dark rounded-0 mt-2 text-uppercase"href="{% url 'add_review' product.id %}">Add Review</a>
-                                <input type="submit" class="btn btn-success text-uppercase rounded-0 mt-2"
+                            <div class="col-12 pl-0">
+                                <input type="submit" class="btn btn-success text-uppercase rounded-0 mr-1 mt-2"
                                     value="Add to Basket">
+
+                                {% if user.is_authenticated %}
+                                <a class="btn btn-info rounded-0 mt-2 mr-1 text-uppercase"
+                                    href="{% url 'add_review' product.id %}">Add Review</a>
+                                {% endif %}
+
+                                <a href="{% url 'products' %}" class="btn btn-outline-dark rounded-0 mt-2">
+                                    <span class="text-uppercase mr-1">&nbsp;Keep Browsing&nbsp;</span>
+                                    <span>
+                                        <i class="fas fa-arrow-right"></i>
+                                    </span>
+                                </a>
                             </div>
                             <input type="hidden" name="redirect_url" value="{{ request.path }}">
                         </div>
@@ -88,12 +93,36 @@
             </div>
             <div class="container-fluid reviews">
                 <div class="row">
-                    <h3 class="logo-font">Reviews</h3>
-                </div>
-                <div class="card">
-                 
+                    <h3 class="logo-font mt-4 mb-3">Reviews</h3>
                 </div>
             </div>
+            {% if reviews %}     
+            {% for review in reviews %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title"><strong>{{ review.rating }}/5 <i class="far fa-star text-warning"></i></strong></h5>
+                    {% if review.user_name %}
+                    <p><strong>{{ review.user_name }}</strong> says:</p>
+                    {% else %}
+                    <p class="font-italic">Anonymous</p>
+                    {% endif %}
+                    <p>{{ review.review }}</p>
+                    {% if request.user == review.user %}
+                    <a href="{% url 'edit_review' review.id %}">Edit</a>
+                    <a href="{% url 'delete_review' review.id %}" class="text-danger">Delete</a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+            
+            {% else %}
+            <p class="text-muted font-italic">There are currently no reviews for this product.</p>
+            {% endif %}
+            {% if user.is_authenticated %}
+            {% else %}
+            <p>Please<a class="text-info" href="{% url 'account_login' %}"> Log In</a> or 
+                <a class="text-info" href="{% url 'account_signup' %}">Register</a> to write a review!</p>
+            {% endif %}
         </div>
     </div>
 </div>

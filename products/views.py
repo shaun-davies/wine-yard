@@ -5,7 +5,7 @@ from django.db.models import Q
 from .models import Product, Category, Country, ProductReview
 from .forms import ProductForm, ReviewForm
 
-# Create your views here.
+# Products
 
 def all_products(request):
     """ A view to to show all products """
@@ -45,12 +45,15 @@ def all_products(request):
 
 
 def product_detail(request, product_id):
-    """ A view to to show single product details """
+    """ A view to to show single product details and reviews"""
 
     product = get_object_or_404(Product, pk=product_id)
 
+    reviews = ProductReview.objects.filter(product=product)
+
     context = {
         'product': product,
+        'reviews': reviews,
     }
     
     return render(request, 'products/product_detail.html', context)
@@ -119,9 +122,11 @@ def delete_product(request, product_id):
     messages.success(request, 'Product deleted.')
     return redirect(reverse('products'))
 
-###### Reviews
+# Reviews
 
 def add_review(request, product_id):
+    """ Add a review to a product """
+
     product = get_object_or_404(Product, pk=product_id)
     if request.method == 'POST':
         form = ReviewForm(request.POST, instance=product)
@@ -133,11 +138,8 @@ def add_review(request, product_id):
                 user_name=request.POST.get('user_name'),
                 rating=int(request.POST.get('rating'))
             )
-            # review_form = form.save(commit=False)
-            # review_form.product = product
-            # review_form.user = request.user
-            # form.save()
             messages.success(request, f'Successfully added review of {product.name}')
+            return redirect(reverse('product_detail', args=[product.id]))
         else:
             messages.error(request, 'Failed to review product. Ensure form is valid.')
     else: 
@@ -145,8 +147,8 @@ def add_review(request, product_id):
     
     template = "products/add_review.html"
     context = {
-        'form' : form,
-        'product' : product,
-        'user' : request.user,
+        'form': form,
+        'product': product,
+        'user': request.user,
     }
     return render(request, template, context)
