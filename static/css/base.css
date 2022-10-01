@@ -54,6 +54,16 @@ html {
     right: 0px; 
 }
 
+.product-specs {
+    font-size: 14px;
+}
+
+.country-image {
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+}
+
 .shop-now {
     text-align: center;
     margin-top: 10px;

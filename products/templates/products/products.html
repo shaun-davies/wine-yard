@@ -44,7 +44,7 @@
                         <div class="card h-100 border-0">
                             {% if product.image %}
                                 <a href="{% url 'product_detail' product.id %}">
-                                    <img class="card-img-top img-fluid anchor-image" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                    <img class="card-img-top img-fluid anchor-image" src="{{ product.image.url }}" alt="/media/noimage.png">
                                 </a>
                                 {% else %}
                                 <a href="{% url 'product_detail' product.id %}">
@@ -58,7 +58,10 @@
                                 <div class="row">
                                     <div class="col">
                                         {% if product.country %}
-                                            <small class="text-muted"><i class="fa-solid fa-earth-americas"></i>{{ product.country.friendly_name }}</small>
+                                        <span>
+                                            <img class="country-image" src="{{ product.country.image_url }}" alt="{{ product.country.name }}">
+                                        </span>
+                                            <small class="text-muted product-specs">{{ product.country.friendly_name }}</small>
                                         {% endif %}
                                             <p class="lead mb-0 text-left font-weight-bold">£{{ product.price }}</p>
                                         {% if request.user.is_superuser %}
