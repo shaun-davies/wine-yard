@@ -18,12 +18,12 @@
     </div>
     <div class="row category-title text-center">
         {% for c in current_categories %}
-        <a class="logo-font col-xs-4 col-sm category-name" href="{% url 'products' %}?category={{ c.name }}">
+        <a class="text-black col-sm category-name" href="{% url 'products' %}?category={{ c.name }}">
             <p>{{ c.friendly_name }}</p>
         </a>
         {% endfor %}
         {% for c in current_countries %}
-        <a class="logo-font col-xs-4 col-sm category-name" href="{% url 'products' %}?countries={{ c.name }}">
+        <a class="text-black col-sm category-name" href="{% url 'products' %}?countries={{ c.name }}">
             <p>{{ c.friendly_name }}</p>
         </a>
         {% endfor %}
