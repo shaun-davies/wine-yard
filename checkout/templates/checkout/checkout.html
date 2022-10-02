@@ -59,7 +59,7 @@
             {% endfor %}
             <hr class="my-1">
             <div class="row">
-                <div class="col-7  text-left">
+                <div class="col-7 text-left">
                     <p class="my-0">Order Total:</p>
                     <p class="my-0">Delivery:</p>
                     <p class="my-0"><strong>Grand Total:</strong></p>
@@ -110,25 +110,31 @@
                     <input type="hidden" value="{{ client_secret }}" name="client_secret">
                 </fieldset>
 
-                <div class="submit-button text-right mt-5 mb-2">
-                    <a href="{% url 'view_basket' %}" class="btn btn-outline-black rounded-0">
-                        <span class="icon">
-                            <i class="fas fa-chevron-left"></i>
-                        </span>
-                        <span class="font-weight-bold">Adjust Basket</span>
-                    </a>
-                    <button id="submit-button" class="btn btn-black rounded-0">
-                        <span class="font-weight-bold">Complete Order</span>
-                        <span class="icon">
-                            <i class="fas fa-lock"></i>
-                        </span>
-                    </button>
-                    <p class="small text-danger my-0">
-                        <span class="icon">
-                            <i class="fas fa-exclamation-circle"></i>
-                        </span>
-                        <span>Your card will be charged <strong>£{{ grand_total|floatformat:2 }}</strong></span>
-                    </p>
+                <div class="row pr-3">
+                    <div class="col-12">
+                        <button id="submit-button" class="btn btn-block btn-success shop-now rounded-0 mb-1">
+                            <span class="font-weight-bold text-uppercase">Complete Order</span>
+                            <span>
+                                <i class="fas fa-lock"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <p class="small text-danger text-right my-0">
+                            <span>
+                                <i class="fas fa-exclamation-circle"></i>
+                            </span>
+                            <span>Your card will be charged <strong>£{{ grand_total|floatformat:2 }}</strong></span>
+                        </p>
+                    </div>
+                    <div class="col-12 submit-button">
+                        <a href="{% url 'view_basket' %}" class="btn btn-block btn-outline-dark btn-light rounded-0 mb-3">
+                            <span">
+                                <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="font-weight-bold text-uppercase">Adjust Basket</span>
+                        </a>
+                    </div>
                 </div>
             </form>
         </div>
