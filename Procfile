@@ -1,1 +1,1 @@
-web: gunicorn wine-yard.wsgi:application
+web: gunicorn wine_yard.wsgi:application
