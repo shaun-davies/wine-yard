@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -121,9 +122,25 @@ WSGI_APPLICATION = 'wine_yard.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+#DATABASES = {
+#    'default': dj_database_url.parse('postgres://bwvserloafwtad:fa1f87e14859038e7f4313f1f97c4d9a3da54fd5b7ced7c8118fa9b97f1be5eb@ec2-99-80-170-190.eu-west-1.compute.amazonaws.com:5432/dd2h53gmk0q10o')
+#}
+
+#if "DATABASE_URL" in os.environ:
+#    DATABASES = {
+#        "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
+#    }
+#else:
+#    DATABASES = {
+#        "default": {
+#            "ENGINE": "django.db.backends.sqlite3",
+#            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+#        }
+#    }
 
 
 # Password validation
