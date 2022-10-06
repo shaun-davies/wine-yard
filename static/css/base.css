@@ -9,7 +9,7 @@ html {
 
 .hero-image {
     background-image: url(/media/hero_image.jpeg);
-    height: 530px;
+    height: 600px;
 }
 
 .mask {
@@ -39,13 +39,6 @@ html {
 
 .subtitle {
     font-family: 'Permanent Marker';
-}
-
-.covertext {
-    position: absolute; 
-    top: 150px; 
-    left: 0px; 
-    right: 0px; 
 }
 
 .product-specs {
@@ -112,36 +105,6 @@ input[name='q']::placeholder {
 
 .toast-capper {
     height: 2px;
-}
-
-/* ------------------------------------ Media Queries */
-
-@media (max-width: 770px){
-    .footer { 
-        display : none; 
-        visibility : hidden; 
-    }
-    
-}
-
-@media (min-width: 1200px) {
-    .container {
-        max-width: 80%;
-    }
-}
-
-@media (min-width: 992px) {
-    .fixed-top-desktop-only {
-        position: fixed;
-        top: 0;
-        right: 0;
-        left: 0;
-        z-index: 1030;
-    }
-
-    .header-container {
-        padding-top: 64px;
-    }
 }
 
 /* Allauth form formatting */
@@ -220,4 +183,34 @@ input[name='q']::placeholder {
     background-color: #dc3545;
     border-color: #dc3545;
     border-radius: 0;
+}
+
+/* ------------------------------------ Media Queries */
+
+@media (max-width: 770px){
+    .footer { 
+        display : none; 
+        visibility : hidden; 
+    }
+    
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 80%;
+    }
+}
+
+@media (min-width: 992px) {
+    .fixed-top-desktop-only {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1030;
+    }
+
+    .header-container {
+        padding-top: 64px;
+    }
 }
