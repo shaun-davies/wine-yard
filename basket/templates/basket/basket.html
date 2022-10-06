@@ -39,7 +39,7 @@
                                 {% if item.product.image %}
                                 <img class="img-fluid rounded" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
                                 {% else %}
-                                <img class="img-fluid rounded" src="{{ item.product.image }}" alt="{{ item.product.name }}" onerror=this.src="/media/noimage.png">
+                                <img class="img-fluid rounded" src="{{ item.product.image }}" alt="{{ item.product.name }}" onerror=this.src="{{ MEDIA_URL }}noimage.png">
                                 {% endif %}
                             </td>
                             <td class="py-3">
