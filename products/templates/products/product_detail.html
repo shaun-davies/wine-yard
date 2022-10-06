@@ -92,6 +92,7 @@
                             </div>
                             <input type="hidden" name="redirect_url" value="{{ request.path }}">
                         </div>
+                    </div>
                 </form>
             </div>
             <div class="container-fluid reviews">
@@ -99,11 +100,12 @@
                     <h3 class="logo-font mt-4 mb-3">Reviews</h3>
                 </div>
             </div>
-            {% if reviews %}     
+            {% if reviews %}
             {% for review in reviews %}
             <div class="card mb-3">
                 <div class="card-body">
-                    <h5 class="card-title"><strong>{{ review.rating }}/5 <i class="far fa-star text-warning"></i></strong></h5>
+                    <h5 class="card-title"><strong>{{ review.rating }}/5 <i
+                                class="far fa-star text-warning"></i></strong></h5>
                     {% if review.user_name %}
                     <p><strong>{{ review.user_name }}</strong> says:</p>
                     {% else %}
@@ -117,13 +119,13 @@
                 </div>
             </div>
             {% endfor %}
-            
+
             {% else %}
             <p class="text-muted font-italic">There are currently no reviews for this product.</p>
             {% endif %}
             {% if user.is_authenticated %}
             {% else %}
-            <p>Please<a class="text-info" href="{% url 'account_login' %}"> Log In</a> or 
+            <p>Please<a class="text-info" href="{% url 'account_login' %}"> Log In</a> or
                 <a class="text-info" href="{% url 'account_signup' %}">Register</a> to write a review!</p>
             {% endif %}
         </div>
