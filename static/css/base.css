@@ -121,6 +121,7 @@ input[name='q']::placeholder {
         display : none; 
         visibility : hidden; 
     }
+    
 }
 
 @media (min-width: 1200px) {
