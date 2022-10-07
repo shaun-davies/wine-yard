@@ -1,6 +1,6 @@
-# [Wine Yard](https://dashboard.heroku.com/apps/wine-yard)
+# [Wine Yard](https://wineyard.herokuapp.com/)
 
-Wineyard is an e-commerce site that hopes to provide a place for customers and wine enthusiasts to view a selection of wines. The site will provide functionalities to purchase products with delivery and a system for registered users to write reviews about individual wines to be displayed on the site. 
+[Wineyard](https://wineyard.herokuapp.com/) is an e-commerce site that hopes to provide a place for customers and enthusiasts to view a selection of wines. The site will provide functionalities to purchase products with delivery and a system for registered users to write reviews about individual wines to be displayed on the site. 
 
 
 # UX
@@ -69,10 +69,27 @@ The overall feel is of a simple, clean and stylish e-commerce site. The followin
 
 ### Database Models
 - [DrawSQL](https://https://drawsql.app/) was used to create visual diagram of the database models.
-![Database models](media/drawSQL-wineyard.png)
+![Database models](documents/drawSQL.png)
 
 ### Wireframes
 - These wireframes were created using [Balsamiq](https://balsamiq.com/) during the Scope Plane part of the design and planning process for this project.
+
+<details><summary>Home</summary>
+<img src="documents/wireframe-home.png">
+</details>
+<details><summary>Products</summary>
+<img src="documents/wireframe-products.png">
+</details>
+<details><summary>Product Details</summary>
+<img src="documents/wireframe-productdetail.png">
+</details>
+<details><summary>Basket</summary>
+<img src="documents/wireframe-basket.png">
+</details>
+<details><summary>Checkout</summary>
+<img src="documents/wireframe-checkout.png">
+</details>
+
 
 # Features
 
@@ -203,7 +220,9 @@ This page is available to superusers only.
 - [Django](https://www.djangoproject.com/) as python web framework for rapid development and clean design.
 - [Stripe](https://stripe.com) as payment platform to validate and accept credit card payments securely.
 - [AWS S3 Bucket](https://aws.amazon.com/) to store images entered into the database.
+- [Boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/quickstart.html) to enable creation, configuration and management of AWS S3.
 - [Django Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/) to style django forms.
+- [Django Storages](https://django-storages.readthedocs.io/en/latest/) collection of custom storage backends with django to work with boto3 and AWS S3.
 - [Django Countries](https://pypi.org/project/django-countries/) to provide country choices for use with forms.
 - [Django allauth](https://django-allauth.readthedocs.io/en/latest/index.html) for account authentication, registration and management.
 - [Gunicorn](https://pypi.org/project/gunicorn/) WSGI HTTP Server for UNIX to aid in deployment of the Django project to heroku.
@@ -213,6 +232,7 @@ This page is available to superusers only.
 - [Git](https://git-scm.com/) to handle version control.
 - [GitHub](https://github.com/) to store and share all project code remotely.
 - [Heroku](https://www.heroku.com/) for deployment. 
+- [GMail](https://mail.google.com/mail/) to create an email account for the project.
 - [Balsamiq](https://balsamiq.com/) to create the wireframes for this project.
 - [DrawSQL](https://drawsql.app/) to create the database diagram for this project.
 
@@ -280,3 +300,73 @@ To allow payment functionality ensure you have created a free account with [Stri
    ```
 
 ## Deploy to Heroku
+
+To deploy The House of Mouse webshop to heroku, take the following steps:
+
+1. Create a `requirements.txt` file using the terminal command 
+   ```sh
+   pip freeze > requirements.txt
+   ```
+
+2. Create a `Procfile` with the terminal command 
+   ```sh
+   echo web: python app.py > Procfile
+   ```
+
+3. `git add` and `git commit` the new requirements and Procfile and then `git push` the project to GitHub.
+
+3. Create a new app on the [Heroku website](https://dashboard.heroku.com/apps) by clicking the "New" button in your dashboard. Give it a name and set the region to whichever is applicable for your location.
+
+4. From the heroku dashboard of your newly created application, click on "Deploy" > "Deployment method" and select GitHub.
+
+5. Confirm the linking of the heroku app to the correct GitHub repository.
+
+6. In the heroku dashboard for the application, click on "Settings" > "Reveal Config Vars".
+
+7. Set the following config vars:
+
+| Key | Value |
+--- | ---
+AWS_ACCESS_KEY_ID | `<your secret key>`
+AWS_SECRET_ACCESS_KEY | `<your secret key>`
+USE_AWS | `True`
+DATABASE_URL | `<your postgres database url>`
+EMAIL_HOST_PASS | `<the email host password>`
+EMAIL_HOST_USER | `<email address>`
+SECRET_KEY | `<your secret key>`
+STRIPE_PUBLIC_KEY | `<your public key>`
+STRIPE_SECRET_KEY | `<your secret key>`
+STRIPE_WH_SECRET | `<your secret key>`
+
+8. From the command line of your local IDE:
+    - Enter the heroku postres shell 
+    - Migrate the database models 
+    - Create your superuser account in your new database
+
+9. In your heroku dashboard, click "Deploy". Scroll down to "Manual Deploy", select the master branch then click "Deploy Branch".
+
+10. Once the build is complete, click the "View app" button provided.
+
+# Credits
+
+## Images
+- Hero image on home page was taken from [Adobe Stock](https://stock.adobe.com/)
+- Product and flag images were taken from various sites. These have been used for educational purposes only.
+
+## Code
+- The project was fundamentaly based on and created from the Code Institute walkthrough projects. From this I customised and created my own code to fit my project.
+
+## Acknowledgements
+
+### Special thanks to:
+- Kieron from Code Institute Student Care for his help and support throughout the course.
+
+- My mentor Adegbenga Adeye for his guidance and coding knowledge.
+
+- Chris Z for his walkthrough projects and teachings which allowed me to create this project.
+
+- Anna Greaves for her teachings and for allowing me to learn how to structure and format a good readme and testing from her example.
+
+### Disclaimer
+The content of this website, including the images used, are for educational purposes only.
+
